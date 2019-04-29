@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Navbar, Nav, NavItem, Grid, Row, Col, FormGroup, InputGroup, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, Grid, Row, Col, FormGroup, InputGroup, FormControl, Button, Table } from 'react-bootstrap';
 import Select from 'react-select';
 
 import { MOVIES } from './movies.js';
@@ -215,7 +215,7 @@ class Movies extends React.Component {
                         </Col>
                     </Row>
                 </Grid>
-
+                   
                 {
                   /* 
                    * TODO 1:
@@ -229,10 +229,38 @@ class Movies extends React.Component {
                    * Но нельзя применить оба фильтра одновременно.
                    * Реализуйте применение нескольких фильтров одновременно.
                    */
-                }                
+                }
+
+
+
                 {
                     this.state.result.map(
-                        (item, index) => <div key={index}>{item.title}</div>
+                        (item, index) => <Grid>
+                                            <Row className="show-grid">
+                                                <Col xs={12}>
+                                                    <Table striped bordered hover>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>Title</th>
+                                                                <th>Format</th>
+                                                                <th>Year</th>
+                                                                <th>Rating</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>{item.id}</td>
+                                                                <td>{item.title}</td>
+                                                                <td></td>
+                                                                <td>{item.release_date}</td>
+                                                                <td>{item.vote_average}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </Table>
+                                                    </Col>
+                                                </Row>
+                                            </Grid>
                     )
                 }
             </div>
